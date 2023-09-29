@@ -1,4 +1,4 @@
-![ɪꝛᴏ](https://th.bing.com/th/id/OIP.hzsGP0ZSS9GpWcWaeDAQQgHaHa?pid=ImgDet&rs=1)
+![ɪꝛᴏ](https://te.legra.ph/file/d2d656ff1e4a61c9feff8.jpg)
 # ᴜɴᴍᴀɪɴᴛᴀɪɴᴇᴅ
 
 [![Typing SVG](https://readme-typing-svg.herokuapp.com/?lines=WELCOME+TO+IRO+AN+ADVANCE+BOT)](https://github.com/IR-O/IRO_ROBOT)
@@ -15,11 +15,18 @@
 <a href="https://telegram.me/iro_bot_support"><img src="https://img.shields.io/badge/-Support%20Channel-blue.svg?style=for-the-badge&logo=Telegram"></a>
 </p>
 
+<p align="center">
+<a href="https://github.com/IR-O/IRO_ROBOT/stargazers"><img src="https://img.shields.io/github/stars/IR-O/IRO_ROBOT?color=black&logo=github&logoColor=black&style=for-the-badge" alt="Stars" /></a>
+<a href="https://github.com/IR-O/IRO_ROBOT/network/members"> <img src="https://img.shields.io/github/forks/IR-O/IRO_ROBOT?color=black&logo=github&logoColor=black&style=for-the-badge" /></a>
+<a href="https://github.com/IR-O/IRO_ROBOT/blob/master/LICENSE"> <img src="https://img.shields.io/badge/License-MIT-blueviolet?style=for-the-badge" alt="License" /> </a>
+<a href="https://www.python.org/"> <img src="https://img.shields.io/badge/Written%20in-Python-orange?style=for-the-badge&logo=python" alt="Python" /> </a>
+<a href="https://github.com/IR-O/IRO_ROBOT/commits/IR-O"> <img src="https://img.shields.io/github/last-commit/IR-O/IRO_ROBOT?color=blue&logo=github&logoColor=green&style=for-the-badge" /></a>
+</p>
+
+
 ### ᴄᴀɴ ʙᴇ ꜰᴏᴜɴᴅ ᴏɴ ᴛᴇʟᴇɢʀᴀᴍ ᴀꜱ [ɪꝛᴏ](https://t.me/Iro_m_bot).
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif"> <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
-
-
 
 
 ─「 ᴄʀᴇᴅɪᴛꜱ 」─ 
@@ -27,6 +34,11 @@
 
 ᴛʜᴀɴᴋꜱ ᴛᴏ ᴀʟʟ ᴛʜᴇ [ᴅᴇᴠꜱ](https://t.me/iro_x_support/16) ᴛᴏ ɢɪᴠᴇ ᴛʜᴇɪʀ ɪᴍᴘᴏʀᴛᴀɴᴛ ᴛɪᴍᴇ ᴛᴏ [ɪꝛᴏ](https://t.me/Iro_m_bot)
 
+<p align="center">
+<a href="https://github.com/Iro09"> <img src="https://img.shields.io/badge/PIKACHU♡-black?style=for-the-badge&logo=github" alt="PIKACHU♡" /> </a>
+<p align="center">
+<a href="https://telegram.me/shaeep43"><img src="https://img.shields.io/badge/-PIKACHU♡%20-blue.svg?style=for-the-badge&logo=Telegram"></a>
+</p>
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif"> <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
@@ -41,7 +53,7 @@
 	
   <h1>
     <p align="center">
-        <a href="https://deploy-btn.vercel.app/">
+        <a href="https://dashboard.heroku.com/new?template=https://github.com/IR-O/IRO_ROBOT">
             <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy">
         </a>
 </h1>
