@@ -41,6 +41,7 @@ psycopg2-binary
 pretty_errors
 pyrogram==2.0.66
 pymongo
+pyrate-limiter==2.10.0
 requests
 regex
 SQLAlchemy==1.4.31 
