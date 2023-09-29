@@ -1,6 +1,6 @@
 from sqlalchemy import Column, String
 
-from KRISTY.modules.sql import BASE, SESSION
+from IRO.modules.sql import BASE, SESSION
 
 
 class Nsfwatch(BASE):
