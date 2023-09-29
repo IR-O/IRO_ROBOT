@@ -1,5 +1,5 @@
 {
-      "name": "IRO",
+      "name": "IRO_ROBOT",
       "description": "A Powerful Telegram Group Management Bot To Manage Your Group.",
       "keywords": [
          "telegram",
@@ -9,7 +9,7 @@
          "IRO"
       ],
     
-   "logo": "https://te.legra.ph/file/295e2c33f51f7ee60ea2f.jpg",  
+   "logo": "https://te.legra.ph/file/d2d656ff1e4a61c9feff8.jpg",  
    "repository": "https://github.com/IR-O/IRO_ROBOT",
    "addons": [
           {
