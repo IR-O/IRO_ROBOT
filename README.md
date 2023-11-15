@@ -1,7 +1,7 @@
 ![ɪꝛᴏ](https://te.legra.ph/file/d2d656ff1e4a61c9feff8.jpg)
 # ᴜɴᴍᴀɪɴᴛᴀɪɴᴇᴅ
 
-[![Typing SVG](https://readme-typing-svg.herokuapp.com/?lines=WELCOME+TO+IRO+AN+ADVANCE+BOT)](https://github.com/IR-O/IRO_ROBOT)
+[![Typing SVG](https://readme-typing-svg.herokuapp.com/?lines=WELCOME+TO+IRO+A+ADVANCE+BOT)](https://github.com/IR-O/IRO_ROBOT)
 
 <p align="center">
     ─「 sᴜᴩᴩᴏʀᴛ 」─
