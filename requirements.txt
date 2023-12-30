@@ -36,7 +36,7 @@ pyaztro
 pykeyboard
 psutil
 pyrate-limiter
-Pillow
+pillow==9.5.0
 psycopg2-binary
 pretty_errors
 pyrogram==2.0.66
