@@ -12,7 +12,7 @@ from telegram.ext import (
     MessageHandler,
 )
 from telegram.utils.helpers import mention_html
-
+from html import escape
 import IRO.modules.sql.global_bans_sql as sql
 from IRO.modules.sql.users_sql import get_user_com_chats
 from IRO import (
