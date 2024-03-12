@@ -39,7 +39,7 @@ pyrate-limiter
 pillow==9.5.0
 psycopg2-binary
 pretty_errors
-pyrogram==2.0.66
+pyrogram
 pymongo
 pyrate-limiter==2.10.0
 requests
