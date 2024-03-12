@@ -11,6 +11,7 @@
     
    "logo": "https://te.legra.ph/file/d2d656ff1e4a61c9feff8.jpg",  
    "repository": "https://github.com/IR-O/IRO_ROBOT",
+   "stack": "heroku-22",
    "addons": [
           {
          "options": {
