@@ -7,11 +7,11 @@ from IRO.utils.permissions import adminsOnly
 from IRO.services.dbfunctions import is_nsfw_on, nsfw_off, nsfw_on
 
 
-help = """
- » /nsfwscan <reply to a sticker> :  Check adult contents
- » /antinsfw  [on/off] :  It will stop the allowance of adult contents in group
+__help__ = """
+ » `/nsfwscan` <reply to a sticker> :  Check adult contents
+ » `/antinsfw`  [on/off] :  It will stop the allowance of adult contents in group
  """
-mod_name = "ANTI-NSFW"
+__mod_name__ = "ANTI-NSFW"
 
 
 async def get_file_id_from_message(message):
@@ -87,16 +87,16 @@ async def detect_nsfw(_, message):
         return
     await message.reply_text(
         f"""
-NSFW Image Detected & Deleted Successfully!
+**NSFW Image Detected & Deleted Successfully!**
 ————————————————————
-User: {message.from_user.mention} [{message.from_user.id}]
-Safe: {results.neutral} %
-Porn: {results.porn} %
-Adult: {results.sexy} %
-Hentai: {results.hentai} %
-Drawings: {results.drawings} %
+**User:** {message.from_user.mention} [`{message.from_user.id}`]
+**Safe:** `{results.neutral} %`
+**Porn:** `{results.porn} %`
+**Adult:** `{results.sexy} %`
+**Hentai:** `{results.hentai} %`
+**Drawings:** `{results.drawings} %`
 ————————————————————
-Use /antinsfw off to disable this.
+__Use `/antinsfw off` to disable this.__
 """
     )
 
@@ -138,15 +138,17 @@ async def nsfw_scan_command(_, message):
     results = results.result
     await m.edit(
         f"""
-Neutral: {results.neutral} %
-Porn: {results.porn} %
-Hentai: {results.hentai} %
-Sexy: {results.sexy} %
-Drawings: {results.drawings} %
-NSFW: {results.is_nsfw}
+**Neutral:** `{results.neutral} %`
+**Porn:** `{results.porn} %`
+**Hentai:** `{results.hentai} %`
+**Sexy:** `{results.sexy} %`
+**Drawings:** `{results.drawings} %`
+**NSFW:** `{results.is_nsfw}`
 """
     )
- @pbot.on_message(filters.command(["antinsfw", f"antinsfw@{bn}"]) & ~filters.private)
+
+
+@pbot.on_message(filters.command(["antinsfw", f"antinsfw@{bn}"]) & ~filters.private)
 @adminsOnly("can_change_info")
 async def nsfw_enable_disable(_, message):
     if len(message.command) != 2:
