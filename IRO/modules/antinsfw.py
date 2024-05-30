@@ -1,7 +1,6 @@
 from os import remove
 
 from pyrogram import filters
-
 from IRO import pbot, arq, BOT_USERNAME as bn
 from IRO.utils.errors import capture_err
 from IRO.utils.permissions import adminsOnly
@@ -9,10 +8,10 @@ from IRO.services.dbfunctions import is_nsfw_on, nsfw_off, nsfw_on
 
 
 __help__ = """
- » `/nsfwscan` <reply to a sticker> :  ᴄʜᴇᴄᴋ ᴀᴅᴜʟᴛ ᴄᴏɴᴛᴇɴᴛꜱ
- » `/antinsfw`  [on/off] :  ɪᴛ ᴡɪʟʟ ꜱᴛᴏᴘ ᴛʜᴇ ᴀʟʟᴏᴡᴀɴᴄᴇ ᴏꜰ ᴀᴅᴜʟᴛ ᴄᴏɴᴛᴇɴᴛꜱ ɪɴ ɢʀᴏᴜᴘ
+ » `/nsfwscan` <reply to a sticker> :  Check adult contents
+ » `/antinsfw`  [on/off] :  It will stop the allowance of adult contents in group
  """
-__mod_name__ = "ANIT-NSFW"
+__mod_name__ = "ANTI-NSFW"
 
 
 async def get_file_id_from_message(message):
@@ -21,7 +20,7 @@ async def get_file_id_from_message(message):
         if int(message.document.file_size) > 3145728:
             return
         mime_type = message.document.mime_type
-        if mime_type != "image/png" and mime_type != "image/jpeg":
+        if mime_type not in ["image/png", "image/jpeg"]:
             return
         file_id = message.document.file_id
 
@@ -73,10 +72,12 @@ async def detect_nsfw(_, message):
         results = await arq.nsfw_scan(file=file)
     except Exception:
         return
+    finally:
+        remove(file)
+    
     if not results.ok:
         return
     results = results.result
-    remove(file)
     nsfw = results.is_nsfw
     if not nsfw:
         return
@@ -86,16 +87,16 @@ async def detect_nsfw(_, message):
         return
     await message.reply_text(
         f"""
-**NSFW Image Detected & Deleted Successfully ʙᴀʙʏ🥀!
-————————————————————**
-**ᴜꜱᴇʀ:** {message.from_user.mention} [`{message.from_user.id}`]
-**ꜱᴀꜰᴇ:** `{results.neutral} %`
-**ᴘᴏʀɴ:** `{results.porn} %`
-**ᴀᴅᴜʟᴛ:** `{results.sexy} %`
-**ʜᴇɴᴛᴀɪ:** `{results.hentai} %`
-**ᴅʀᴀᴡɪɴɢꜱ:** `{results.drawings} %`
-**————————————————————**
-__ᴜꜱᴇ `/antinsfw off` ᴛᴏ ᴅɪꜱᴀʙʟᴇ ᴛʜɪꜱ.__
+**NSFW Image Detected & Deleted Successfully!**
+————————————————————
+**User:** {message.from_user.mention} [`{message.from_user.id}`]
+**Safe:** `{results.neutral} %`
+**Porn:** `{results.porn} %`
+**Adult:** `{results.sexy} %`
+**Hentai:** `{results.hentai} %`
+**Drawings:** `{results.drawings} %`
+————————————————————
+__Use `/antinsfw off` to disable this.__
 """
     )
 
@@ -105,7 +106,7 @@ __ᴜꜱᴇ `/antinsfw off` ᴛᴏ ᴅɪꜱᴀʙʟᴇ ᴛʜɪꜱ.__
 async def nsfw_scan_command(_, message):
     if not message.reply_to_message:
         await message.reply_text(
-            "`ʀᴇᴘʟʏ ᴛᴏ ᴀɴ ɪᴍᴀɢᴇ/ᴅᴏᴄᴜᴍᴇɴᴛ/ꜱᴛɪᴄᴋᴇʀ/ᴀɴɪᴍᴀᴛɪᴏɴ ᴛᴏ ꜱᴄᴀɴ ɪᴛ ʙᴀʙʏ🥀.`"
+            "Reply to an image/document/sticker/animation to scan it."
         )
         return
     reply = message.reply_to_message
@@ -117,30 +118,32 @@ async def nsfw_scan_command(_, message):
         and not reply.video
     ):
         await message.reply_text(
-            "ʀᴇᴘʟʏ ᴛᴏ ᴀɴ ɪᴍᴀɢᴇ/ᴅᴏᴄᴜᴍᴇɴᴛ/ꜱᴛɪᴄᴋᴇʀ/ᴀɴɪᴍᴀᴛɪᴏɴ ᴛᴏ ꜱᴄᴀɴ ɪᴛ ʙᴀʙʏ🥀."
+            "Reply to an image/document/sticker/animation to scan it."
         )
         return
-    m = await message.reply_text("`ꜱᴄᴀɴɴɪɴɢ ʙᴀʙʏ🥀...`")
+    m = await message.reply_text("Scanning...")
     file_id = await get_file_id_from_message(reply)
     if not file_id:
-        return await m.edit("`ꜱᴏᴍᴇᴛʜɪɴɢ ᴡʀᴏɴɢ ʜᴀᴘᴘᴇɴᴇᴅ ʙᴀʙʏ🥀...|")
+        return await m.edit("Something went wrong...")
     file = await pbot.download_media(file_id)
     try:
         results = await arq.nsfw_scan(file=file)
     except Exception:
         return
-    remove(file)
+    finally:
+        remove(file)
+
     if not results.ok:
         return await m.edit(results.result)
     results = results.result
     await m.edit(
         f"""
-**ɴᴇᴜᴛʀᴀʟ:** `{results.neutral} %`
-**ᴘᴏʀɴ:** `{results.porn} %`
-**ʜᴇɴᴛᴀɪ:** `{results.hentai} %`
-**ꜱᴇxʏ:** `{results.sexy} %`
-**ᴅʀᴀᴡɪɴɢꜱ:** `{results.drawings} %`
-**ɴꜱꜰᴡ:** `{results.is_nsfw}`
+**Neutral:** `{results.neutral} %`
+**Porn:** `{results.porn} %`
+**Hentai:** `{results.hentai} %`
+**Sexy:** `{results.sexy} %`
+**Drawings:** `{results.drawings} %`
+**NSFW:** `{results.is_nsfw}`
 """
     )
 
@@ -149,18 +152,17 @@ async def nsfw_scan_command(_, message):
 @adminsOnly("can_change_info")
 async def nsfw_enable_disable(_, message):
     if len(message.command) != 2:
-        await message.reply_text("ᴜꜱᴀɢᴇ: /antinsfw [on/off] ʙᴀʙʏ🥀")
+        await message.reply_text("Usage: /antinsfw [on/off]")
         return
-    status = message.text.split(None, 1)[1].strip()
-    status = status.lower()
+    status = message.text.split(None, 1)[1].strip().lower()
     chat_id = message.chat.id
-    if status == "on" or status == "yes":
+    if status in ["on", "yes"]:
         await nsfw_on(chat_id)
         await message.reply_text(
-            "ᴇɴᴀʙʟᴇᴅ ᴀɴᴛɪɴꜱꜰᴡ ꜱʏꜱᴛᴇᴍ. ɪ ᴡɪʟʟ ᴅᴇʟᴇᴛᴇ ᴍᴇꜱꜱᴀɢᴇꜱ ᴄᴏɴᴛᴀɪɴɪɴɢ ɪɴᴀᴘᴘʀᴏᴘʀɪᴀᴛᴇ ᴄᴏɴᴛᴇɴᴛ ʙᴀʙʏ🥀."
+            "Enabled anti-NSFW system. I will delete messages containing inappropriate content."
         )
-    elif status == "off" or status == "no":
+    elif status in ["off", "no"]:
         await nsfw_off(chat_id)
-        await message.reply_text("ᴅɪꜱᴀʙʟᴇᴅ ᴀɴᴛɪɴꜱꜰᴡ ꜱʏꜱᴛᴇᴍ ʙᴀʙʏ🥀.")
+        await message.reply_text("Disabled anti-NSFW system.")
     else:
-        await message.reply_text("ᴜɴᴋɴᴏᴡɴ ꜱᴜꜰꜰɪx, ᴜꜱᴇ /antinsfw [on/off] ʙᴀʙʏ🥀")
+        await message.reply_text("Unknown suffix, use /antinsfw [on/off]")
