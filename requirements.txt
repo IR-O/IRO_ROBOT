@@ -28,7 +28,7 @@ markdown2
 multicolorcaptcha
 motor
 nudepy
-nekos.py
+nekos.py==1.1.0
 opencv-python-headless
 Python_ARQ
 python-telegram-bot==13.14
